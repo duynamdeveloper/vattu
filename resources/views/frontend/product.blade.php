@@ -1,5 +1,6 @@
 @extends('frontend.layout.index')
 @section('title','Danh mục sản phẩm')
+
 @section('header')
 	@include('frontend.partials.header')
 @endsection
@@ -8,6 +9,4 @@
 @endsection
 @section('footer')
 	@include('frontend.partials.footer')
-@endsection
-@section('custom-scripts')
 @endsection

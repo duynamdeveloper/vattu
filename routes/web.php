@@ -21,6 +21,12 @@ Route::group([
 		Route::get('/blog',['as'=>'blog','uses'=>'DefaultController@blog']);
 		Route::get('/article',['as'=>'article','uses'=>'DefaultController@article']);
 	});
+
+/*
+
+BACKEND ROUTES
+
+ */
 Route::group([
 	'as'=> 'be.',
 	'middleware' => 'web',
@@ -28,13 +34,25 @@ Route::group([
 	'prefix' => 'admin'
 	], function(){
 		Route::get('/',['as'=>'index','uses'=>'DefaultController@index']);
+		/*
+		
+		BACKEND PRODUCT ROUTES
 
+		 */
 		Route::group([
 			'as' => 'product.',
 			'middleware' => 'web',
 			'prefix' => 'product',
 		], function(){
 			Route::get('/',['as' => 'index','uses' => 'ProductController@index']);
+
+			//Product ajax routes
+			Route::group([
+			'as' => 'ajax.',
+			'prefix' => 'ajax'
+			], function(){
+				Route::get('/all',['as' => 'all', 'uses' => 'ProductController@ajaxGetProducts']);
+			});
 		});
 		
 	});
